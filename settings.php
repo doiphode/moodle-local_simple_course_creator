@@ -55,6 +55,9 @@ if ( $hassiteconfig ){
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/type_format',
         get_string('type_format', 'plugin'), '', 0));
 
+    $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/numberofsections',
+        get_string('numberweeks'), '', 0));
+
     $settings->add(new admin_setting_heading('appearance', get_string('appearance'), ''));
 
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/appearance',

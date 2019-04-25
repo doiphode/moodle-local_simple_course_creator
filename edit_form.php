@@ -48,6 +48,8 @@ class course_edit_form extends moodleform {
             $sectodisp[$keysectodisp->name] = $keysectodisp->value;
         }
 
+        $GLOBALS['sectodisp'] = $sectodisp;
+
         $mform    = $this->_form;
         $PAGE->requires->yui_module('moodle-course-formatchooser', 'M.course.init_formatchooser',
             array(array('formid' => $mform->getAttribute('id'))));
@@ -258,9 +260,12 @@ class course_edit_form extends moodleform {
         }
 
         // Appearance.
-        if ($sectodisp["appearance"] == 1) {
-            $mform->addElement('header', 'appearancehdr', get_string('appearance'));
 
+        if ($sectodisp["appearance"] != 1) {
+            $mform->addElement('html','<div style="display:none">');
+        } else {
+            $mform->addElement('header', 'appearancehdr', get_string('appearance'));
+        }
             if (!empty($CFG->allowcoursethemes)) {
                 $themeobjects = get_list_of_themes();
                 $themes = array();
@@ -305,6 +310,9 @@ class course_edit_form extends moodleform {
             $mform->addElement('selectyesno', 'showreports', get_string('showreports'));
             $mform->addHelpButton('showreports', 'showreports');
             $mform->setDefault('showreports', $courseconfig->showreports);
+
+        if ($sectodisp["appearance"] != 1) {
+            $mform->addElement('html','</div>');
         }
 
         // Files and uploads.

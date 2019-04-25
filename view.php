@@ -45,3 +45,9 @@ $PAGE->set_title('Simple Course Creator');
 $PAGE->set_heading('Choose');
 $PAGE->set_pagelayout('admin');
 $editform = new course_create_form($CFG->wwwroot . '/local/simple_course_creator/view.php?category='.$categoryid);
+
+echo '<style>';
+if ($sectodisp["numberofsections"] != 1) {
+    echo '#fitem_id_numsections { display:none; }';
+}
+echo '</style>';
