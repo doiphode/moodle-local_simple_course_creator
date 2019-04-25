@@ -104,26 +104,30 @@ class course_edit_form extends moodleform {
         }
 
         // Verify permissions to change course category or keep current.
+        if ($sectodisp["coursecategory"] != 1) {
+            $mform->addElement('html','<div style="display:none">');
+        }
 
-        if (empty($course->id)) {
-            if (has_capability('moodle/course:create', $categorycontext)) {
+            if (empty($course->id)) {
+                if (has_capability('moodle/course:create', $categorycontext)) {
                     $displaylist = core_course_category::make_categories_list('moodle/course:create');
                     $mform->addElement('select', 'category', get_string('coursecategory'), $displaylist);
                     $mform->addHelpButton('category', 'coursecategory');
                     $mform->setDefault('category', $category->id);
-            } else {
+
+                } else {
                     $mform->addElement('hidden', 'category', null);
                     $mform->setType('category', PARAM_INT);
                     $mform->setConstant('category', $category->id);
-            }
-        } else {
-            if (has_capability('moodle/course:changecategory', $coursecontext)) {
+                }
+            } else {
+                if (has_capability('moodle/course:changecategory', $coursecontext)) {
                     $displaylist = core_course_category::make_categories_list('moodle/course:changecategory');
-                if (!isset($displaylist[$course->category])) {
+                    if (!isset($displaylist[$course->category])) {
                         // Always keep current.
                         $displaylist[$course->category] = core_course_category::get($course->category, MUST_EXIST, true)
                             ->get_formatted_name();
-                }
+                    }
                     $mform->addElement('select', 'category', get_string('coursecategory'), $displaylist);
                     $mform->addHelpButton('category', 'coursecategory');
                 } else {
@@ -132,8 +136,10 @@ class course_edit_form extends moodleform {
                     $mform->setType('category', PARAM_INT);
                     $mform->setConstant('category', $course->category);
                 }
+            }
+        if ($sectodisp["coursecategory"] != 1) {
+            $mform->addElement('html','</div>');
         }
-
 
         $choices = array();
         $choices['0'] = get_string('hide');

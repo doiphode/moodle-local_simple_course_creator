@@ -39,6 +39,9 @@ if ( $hassiteconfig ){
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/coursevisibility',
         get_string('coursevisibility'), '', 0));
 
+    $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/coursecategory',
+            get_string('coursecategory'), '', 0));
+
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/idnumbercourse',
         get_string('idnumbercourse'), '', 0));
 
@@ -81,8 +84,8 @@ if ( $hassiteconfig ){
 
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/tags',
         get_string('tags', 'tag'), '', 0));
-
     
+
     // Create
 
     $ADMIN->add( 'localplugins', $settings );
