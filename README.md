@@ -1,0 +1,1 @@
+# moodle-local_simple_course_creator
