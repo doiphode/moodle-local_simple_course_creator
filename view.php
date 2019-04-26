@@ -32,19 +32,16 @@ Purpose:  To render the form to a page on moodle
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 require_once 'forms/course_create_form.php';
 
-global $DB, $CFG, $USER, $COURSE, $OUTPUT, $PAGE, $EXTDB;
-$categoryid = optional_param('category','0', PARAM_INT); // Course category - can be changed in edit form.
+global $OUTPUT, $PAGE;
 
 require_login();
 $catcontext = context_coursecat::instance($categoryid);
 require_capability('moodle/course:create', $catcontext);
 $PAGE->set_context(context_coursecat::instance($categoryid));
 
-$PAGE->set_url('/local/simple_course_creator/view.php', array('category'=>$categoryid));
 $PAGE->set_title('Simple Course Creator');
 $PAGE->set_heading('Choose');
 $PAGE->set_pagelayout('admin');
-$editform = new course_create_form($CFG->wwwroot . '/local/simple_course_creator/view.php?category='.$categoryid);
 
 echo '<style>';
 if ($sectodisp["numberofsections"] != 1) {

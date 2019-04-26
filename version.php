@@ -10,9 +10,7 @@
  
 defined('MOODLE_INTERNAL') || die();
 
-// don't forget to bump this in case of change in local/db ...
-$plugin->version   = 2019042203;        // The current plugin version (Date: YYYYMMDDXX)
-
+$plugin->version   = 2019042204;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2011120100;        // Moodle 2.2 onwards
 $plugin->component = 'local_simple_course_creator';       // Full name of the plugin (used for diagnostics)
 $plugin->maturity = MATURITY_STABLE; // required for registering to Moodle's database of plugins 

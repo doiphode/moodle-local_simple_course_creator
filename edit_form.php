@@ -27,6 +27,9 @@ defined('MOODLE_INTERNAL') || die;
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->libdir.'/completionlib.php');
 
+$categoryid = optional_param('category','0', PARAM_INT); // Course category - can be changed in edit form.
+$url = new moodle_url( $CFG->wwwroot . '/local/simple_course_creator/view.php', array('category'=>$categoryid));
+$PAGE->set_url($url);
 /**
  * The form for handling editing a course.
  */
@@ -56,7 +59,7 @@ class course_edit_form extends moodleform {
 
         $course        = $this->_customdata['course'];          // This contains the data of this form.
         $category      = $this->_customdata['category'];
-        $editoroptions = $this->_customdata['editoroptions'];
+/*        $editoroptions = $this->_customdata['editoroptions']; */
         $returnto = $this->_customdata['returnto'];
         $returnurl = $this->_customdata['returnurl'];
 

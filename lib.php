@@ -46,7 +46,7 @@ function local_simple_course_creator_extend_settings_navigation(settings_navigat
     }
     if (has_capability('moodle/course:create', $context)) {
         $url = new moodle_url('/local/simple_course_creator/view.php', array('category' => $context->instanceid));
-        $categorynode->add(get_string('pluginname', 'local_simple_course_creator'), $url, navigation_node::TYPE_SETTING, null, 'course_create', new pix_icon('i/return', ''));
+        $categorynode->add(get_string('pluginname', 'local_simple_course_creator'), $url, navigation_node::TYPE_SETTING, null, 'simple_course_create', new pix_icon('i/return', ''));
     }
 
 }

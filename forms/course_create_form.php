@@ -30,7 +30,6 @@ require_once('edit_form.php');
  * Edit course settings
  *
  */
-
 class course_create_form extends moodleform
 {
     public function definition()
@@ -38,7 +37,6 @@ class course_create_form extends moodleform
         return true;
     }
 }
-
 $id = optional_param('id', 0, PARAM_INT); // Course id.
 $categoryid = optional_param('category', 0, PARAM_INT); // Course category - can be changed in edit form.
 $returnto = optional_param('returnto', 0, PARAM_ALPHANUM); // Generic navigation return page switch.
@@ -82,6 +80,9 @@ if ($id) {
 }
 
 // First create the form.
+$editoroptions = "";
+$returnurl = new moodle_url($CFG->wwwroot . '/course/management.php', array('categoryid' => $categoryid));
+
 $args = array(
     'course' => $course,
     'category' => $category,
@@ -99,14 +100,6 @@ if ($editform->is_cancelled()) {
         // In creating the course.
         $course = create_course($data, $editoroptions);
 
-        // Get the context of the newly created course.
-        $context = context_course::instance($course->id, MUST_EXIST);
-
-        if (!empty($CFG->creatornewroleid) and !is_viewing($context, NULL, 'moodle/role:assign') and !is_enrolled($context, NULL, 'moodle/role:assign')) {
-            // Deal with course creators - enrol them internally with default role.
-            enrol_try_internal_enrol($course->id, $USER->id, $CFG->creatornewroleid);
-        }
-
         // The URL to take them to if they chose save and display.
         $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
 
@@ -123,11 +116,8 @@ if ($editform->is_cancelled()) {
 
 // Print the form.
 
-$PAGE->set_title($title);
-$PAGE->set_heading($fullname);
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading($pagedesc);
 
 $editform->display();
 
