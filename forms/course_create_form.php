@@ -32,11 +32,11 @@ require_once('edit_form.php');
  */
 class course_create_form extends moodleform
 {
-    public function definition()
-    {
+    public function definition() {
         return true;
     }
 }
+
 $id = optional_param('id', 0, PARAM_INT); // Course id.
 $categoryid = optional_param('category', 0, PARAM_INT); // Course category - can be changed in edit form.
 $returnto = optional_param('returnto', 0, PARAM_ALPHANUM); // Generic navigation return page switch.

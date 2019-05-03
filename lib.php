@@ -1,6 +1,4 @@
 <?php
-
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -32,16 +30,17 @@ defined('MOODLE_INTERNAL') || die();
  * Hook to insert a link in settings navigation menu block
  *
  * @param settings_navigation $navigation
- * @param course_context      $context
+ * @param course_context $context
  * @return void
  */
 function local_simple_course_creator_extend_settings_navigation(settings_navigation $navigation, $context) {
+
     global $CFG, $DB;
-    // If not in a course category context, then leave
-    if ($context == null){
+    // If not in a course category context, then leave.
+    if ($context == null) {
         return;
     }
-    if(null==($categorynode=$navigation->get('categorysettings'))){
+    if (null == ($categorynode = $navigation->get('categorysettings'))) {
         return;
     }
     if (has_capability('moodle/course:create', $context)) {

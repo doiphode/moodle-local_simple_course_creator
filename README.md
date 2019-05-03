@@ -1,7 +1,7 @@
 Simple Course Creator
 =======================
 
-This local plugin allows users to create courses from the Course Category menu. This tool gives minimum options to create courses, handy for new or reluctant users. The different sections on core Moodle's course creation page can optionally be added / removed from the plugin's administration.
+This local plugin allows users to create courses from the Course Category menu. This tool gives minimum or allowed options to a create course, handy for new or busy users. The different sections on core Moodle's course creation page can optionally be added / removed from the plugin's administration.
 
 - Every section when creatig a course except the General is made optional. So at the minimum the user will have only the Course Full name, Shortname, Start Date and End Date.
 - The Category if not shown, creates the course in the existing category
@@ -28,9 +28,9 @@ The tool gives a configuration under plugins -> Local plugins -> Simple Course C
 
 Acknowledgements
 ----------------
-This development came out of user requests at the Moodle Moot 2019 Manchester (mootIE19). This item was second on the popularity list.
+This development came out of user requests at the Moodle Moot 2019 Manchester (#mootIEUK19). 
 Thanks to Brett Lucas at Queen Mary University of London for refining the requirements.
 
 Author
 ------
-Shubhendra Doiphode (doiphode.sunny@gmail.com)
+Shubhendra Doiphode (s.doiphode@qmul.ac.uk)

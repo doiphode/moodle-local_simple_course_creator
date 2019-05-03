@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -14,7 +13,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
  * Settings for Available Sections in Course Creation Form.
  * @package local
@@ -26,13 +24,11 @@
 // No direct script access.
 defined('MOODLE_INTERNAL') || die();
 
-// Ensure the configurations for this site are set
-if ( $hassiteconfig ){
+// Ensure the configurations for this site are set.
+if ($hassiteconfig) {
 
-    // Create the new settings page
-    // - in a local plugin this is not defined as standard, so normal $settings->methods will throw an error as
-    // $settings will be NULL
-    $settings = new admin_settingpage( 'local_simple_course_creator', get_string('setting_name','local_simple_course_creator') );
+    // Create the new settings page in a local plugin this is not defined as standard, so normal $settings->methods will throw an error as $settings will be NULL.
+    $settings = new admin_settingpage('local_simple_course_creator', get_string('setting_name', 'local_simple_course_creator'));
 
     $settings->add(new admin_setting_heading('general', get_string('general', 'form'), ''));
 
@@ -40,7 +36,7 @@ if ( $hassiteconfig ){
         get_string('coursevisibility'), '', 0));
 
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/coursecategory',
-            get_string('coursecategory'), '', 0));
+        get_string('coursecategory'), '', 0));
 
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/idnumbercourse',
         get_string('idnumbercourse'), '', 0));
@@ -87,10 +83,8 @@ if ( $hassiteconfig ){
 
     $settings->add(new admin_setting_configcheckbox('local_simple_course_creator/tags',
         get_string('tags', 'tag'), '', 0));
-    
 
-    // Create
 
-    $ADMIN->add( 'localplugins', $settings );
+    $ADMIN->add('localplugins', $settings);
 
 }

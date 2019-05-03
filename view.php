@@ -1,13 +1,4 @@
 <?php
-
-/****************************************************************
-
-File:     /local/simple_course_creator/view.php
-
-Purpose:  To render the form to a page on moodle
-
- ****************************************************************/
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -30,9 +21,9 @@ Purpose:  To render the form to a page on moodle
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
-require_once 'forms/course_create_form.php';
+require_once($CFG->dirroot . '/local/simple_course_creator/forms/course_create_form.php');
 
-global $OUTPUT, $PAGE;
+global $OUTPUT, $PAGE, $CFG;
 
 require_login();
 $catcontext = context_coursecat::instance($categoryid);
