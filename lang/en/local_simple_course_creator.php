@@ -24,4 +24,4 @@
 
 $string['pluginname'] = 'Simple Course Creator';
 $string['setting_name'] = "Simple Course Creator Settings";
-
+$string['simple_course_creator:manage'] = 'Manage Simple Course Creator';
