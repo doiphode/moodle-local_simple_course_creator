@@ -192,6 +192,8 @@ class course_edit_form extends moodleform
         // Description.
         if ($sectodisp["description"] == 1) {
             if ($sectodisp["description"] == 1) {
+
+                $editoroptions ='';
                 $mform->addElement('header', 'descriptionhdr', get_string('description'));
                 $mform->setExpanded('descriptionhdr');
 

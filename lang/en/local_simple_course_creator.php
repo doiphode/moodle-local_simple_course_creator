@@ -22,6 +22,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Simple Course Creator';
-$string['setting_name'] = "Simple Course Creator Settings";
-$string['simple_course_creator:manage'] = 'Manage Simple Course Creator';
+$string['pluginname'] = 'Simple course creator';
+$string['setting_name'] = "Simple course creator cettings";
+$string['simple_course_creator:manage'] = 'Manage simple course creator';
