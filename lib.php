@@ -44,15 +44,14 @@ function local_simple_course_creator_extend_settings_navigation(settings_navigat
     if (null == ($categorynode = $navigation->get('categorysettings'))) {
         return;
     }
+    if($context->contextlevel != CONTEXT_COURSECAT) {
+        return false;
+    }
+
+
     if (has_capability('moodle/course:create', $context)) {
-//        $url = new moodle_url('/local/simple_course_creator/view.php', array('category' => $context->instanceid));
-//        $categorynode->add(get_string('pluginname', 'local_simple_course_creator'), $url, navigation_node::TYPE_SETTING, null, 'simple_course_create', new pix_icon('i/return', ''));
-
         $url = new moodle_url('/local/simple_course_creator/view.php', array('category' => $context->instanceid));
-        $node = navigation_node::create(get_string('pluginname', 'local_simple_course_creator'), $url, navigation_node::TYPE_SETTING, null, 'simple_course_create', new pix_icon('i/return', ''));
-        $PAGE->navigation->add_node($node);
-        $node->showinflatnavigation = true;
-
+        $categorynode->add(get_string('pluginname', 'local_simple_course_creator'), $url, navigation_node::TYPE_SETTING, null, 'simple_course_create', new pix_icon('i/return', ''));
     }
 
 }
