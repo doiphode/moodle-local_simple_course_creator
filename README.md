@@ -33,4 +33,4 @@ Thanks to Brett Lucas at Queen Mary University of London for refining the requir
 
 Author
 ------
-Shubhendra Doiphode (s.doiphode@qmul.ac.uk)
+Shubhendra Doiphode (doiphode.sunny@gmail.com)
