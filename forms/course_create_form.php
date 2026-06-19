@@ -80,7 +80,15 @@ if ($id) {
 }
 
 // First create the form.
-$editoroptions = "";
+$editorcontext = !empty($course) ? context_course::instance($course->id) : $catcontext;
+$editoroptions = array(
+    'maxfiles'  => EDITOR_UNLIMITED_FILES,
+    'maxbytes'  => $CFG->maxbytes,
+    'trusttext' => false,
+    'noclean'   => true,
+    'context'   => $editorcontext,
+);
+
 $returnurl = new moodle_url($CFG->wwwroot . '/course/management.php', array('categoryid' => $categoryid));
 
 $args = array(
@@ -95,6 +103,9 @@ if ($editform->is_cancelled()) {
     // The form has been cancelled, take them back to what ever the return to is.
     redirect($returnurl);
 } else if ($data = $editform->get_data()) {
+    if (!isset($data->summary_editor)) {
+        $data->summary_editor = array('text' => '', 'format' => FORMAT_HTML, 'itemid' => 0);
+    }
     // Process data if submitted.
     if (empty($course->id)) {
         // In creating the course.
