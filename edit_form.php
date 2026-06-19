@@ -57,8 +57,6 @@ class course_edit_form extends moodleform
         $GLOBALS['sectodisp'] = $sectodisp;
 
         $mform = $this->_form;
-        $PAGE->requires->yui_module('moodle-course-formatchooser', 'M.course.init_formatchooser',
-            array(array('formid' => $mform->getAttribute('id'))));
 
         $course = $this->_customdata['course'];          // This contains the data of this form.
         $category = $this->_customdata['category'];
@@ -187,6 +185,9 @@ class course_edit_form extends moodleform
                 $mform->hardFreeze('idnumber');
                 $mform->setConstants('idnumber', $course->idnumber);
             }
+        } else {
+            $mform->addElement('hidden', 'idnumber', '');
+            $mform->setType('idnumber', PARAM_RAW);
         }
 
         // Description.
@@ -235,7 +236,9 @@ class course_edit_form extends moodleform
         if ($sectodisp["type_format"] == 1) {
             $mform->addElement('header', 'courseformathdr', get_string('type_format', 'plugin'));
             $mform->addElement('select', 'format', get_string('format'), $formcourseformats);
-            $mform->addHelpButton('format', 'format');
+            if ((int)$CFG->branch < 405) {
+                $mform->addHelpButton('format', 'format');
+            }
             $mform->setDefault('format', $courseconfig->format);
 
             // Button to update format-specific options on format change (will be hidden by JavaScript).
@@ -247,7 +250,9 @@ class course_edit_form extends moodleform
         } else {
             $mform->addElement('html', '<div style="display:none">');
             $mform->addElement('select', 'format', get_string('format'), $formcourseformats);
-            $mform->addHelpButton('format', 'format');
+            if ((int)$CFG->branch < 405) {
+                $mform->addHelpButton('format', 'format');
+            }
             $mform->setDefault('format', $courseconfig->format);
 
             // Button to update format-specific options on format change (will be hidden by JavaScript).
